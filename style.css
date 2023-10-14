@@ -28,3 +28,7 @@
 .track div {
   flex: 1;
 }
+#waveform {
+  height: 150px;
+  background-color: blue;
+}
