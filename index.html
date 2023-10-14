@@ -7,19 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wavesurfer</title>
     <link rel="stylesheet" href="style.css">
-    <script src='https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'></script>
+    <script type="module" src="./main.js"></script>
 </head>
 
 <body>
-    <div class="hero"></div>
+    <div class="headline" id="flip-2-ver-right-fwd">
+        <div class="headline-content">
+            <h1>Player</h1>
+        </div>
+    </div>
     <div class="music">
-        <p>Artist: test is</p>
-        <h1>not bad</h1>
+        <div class="music-info">
+            <p>Artist: PORCHES.</p>
+            <h1>Airport Terminal</h1>
+        </div>
         <div class="track">
             <div id="waveform"></div>
         </div>
-    </div>
 
+        <div class="time-info">
+            <div>Total time: <span id="time-total">0:00</span></div>
+            <div>Current time: <span id="time-current">0:00</span></div>
+            <div>Ramaining time: <span id="time-remaining">0:00</span></div>
+        </div>
+
+        <div class="controls">
+            <button id="zoom-in" class="control-button">+</button>
+            <button id="zoom-out" class="control-button">-</button>
+            <button id="reset" class="control-button">Reset</button>
+        </div>
+
+        <div class="controls">
+            <button id="play-pause" class="control-button">Play</button>
+        </div>
+
+    </div>
 </body>
 
 </html>
