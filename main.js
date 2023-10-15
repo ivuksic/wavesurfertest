@@ -127,6 +127,12 @@ stopButton.addEventListener("click", () => {
   document.getElementById("time-current").innerText = "0:00";
 });
 
+const volumeSlider = document.getElementById("volume-slider");
+
+volumeSlider.addEventListener("input", (e) => {
+  wavesurfer.setVolume(e.target.value);
+});
+
 function formatTime(timeInSeconds) {
   const minutes = Math.floor(timeInSeconds / 60);
   const seconds = Math.floor(timeInSeconds % 60);
