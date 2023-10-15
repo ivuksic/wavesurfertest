@@ -9,12 +9,13 @@ body {
 }
 
 .headline {
-  width: 100%;
+  width: 80%;
   height: 20vh;
   background: #2d5b88;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
 }
 #flip-2-ver-right-fwd {
   -webkit-animation: flip-2-ver-right-fwd 4s
@@ -69,15 +70,14 @@ body {
 }
 
 .music {
-  width: 60%;
-  max-width: 600px;
-  padding: 30px;
+  width: 90%;
+  max-width: max-content;
+  padding: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  background: #f1f9ff;
-  color: #333;
-  border-radius: 8px;
-  margin: 30px auto;
-  overflow: hidden;
+  background: #9bc6e7;
+  color: #2d5b88;
+  border-radius: 20px;
+  margin: 20px auto;
 }
 
 .music-info {
@@ -89,8 +89,10 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  padding: 10px, 10px, 10px, 10px;
+  width: 100%;
+  overflow: scroll;
 }
-
 .time-info {
   text-align: center;
   margin: 10px 0;

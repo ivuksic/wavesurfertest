@@ -1,14 +1,14 @@
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import TimelinePlugin from "https://unpkg.com/wavesurfer.js@7/dist/plugins/timeline.esm.js";
+import Hover from "https://unpkg.com/wavesurfer.js@7/dist/plugins/hover.esm.js";
 
-let initialZoom = 10;
+let initialZoom = 5;
 let currentZoom = initialZoom;
 
-// Create a timeline plugin instance with custom options
 const topTimeline = TimelinePlugin.create({
-  height: 20,
+  height: 24,
   insertPosition: "beforebegin",
-  timeInterval: 10,
+  timeInterval: 20,
   primaryLabelInterval: 5,
   secondaryLabelInterval: 1,
   style: {
@@ -18,22 +18,33 @@ const topTimeline = TimelinePlugin.create({
 });
 
 const bottomTimline = TimelinePlugin.create({
-  height: 10,
-  timeInterval: 1,
-  primaryLabelInterval: 5,
+  height: 15,
+  timeInterval: 15,
+  primaryLabelInterval: 60,
   style: {
-    fontSize: "10px",
-    color: "black",
+    fontSize: "5px",
+    color: "#2d5b88",
   },
+});
+
+const hover = Hover.create({
+  lineColor: "#2d5b88",
+  lineWidth: 2,
+  labelBackground: "#555",
+  labelColor: "#fff",
+  labelSize: "11px",
 });
 
 const wavesurfer = WaveSurfer.create({
   container: "#waveform",
   waveColor: "#fff",
-  progressColor: "#F1EAF5",
+  progressColor: "F1EAF5",
   url: "./media/PORCHES. - Airport Terminal.mp3",
   minPxPerSec: initialZoom,
-  plugins: [topTimeline, bottomTimline],
+  plugins: [topTimeline, bottomTimline, hover],
+  barWidth: 3,
+  barGap: 1,
+  barRadius: 3,
 });
 
 wavesurfer.on("ready", (duration) => {
@@ -109,6 +120,13 @@ wavesurfer.once("decode", () => {
   });
 });
 
+const stopButton = document.querySelector("#stop");
+
+stopButton.addEventListener("click", () => {
+  wavesurfer.stop();
+  document.getElementById("time-current").innerText = "0:00";
+});
+
 function formatTime(timeInSeconds) {
   const minutes = Math.floor(timeInSeconds / 60);
   const seconds = Math.floor(timeInSeconds % 60);
@@ -116,3 +134,6 @@ function formatTime(timeInSeconds) {
     .toString()
     .padStart(2, "0")}`;
 }
+wavesurfer.on("interaction", () => {
+  wavesurfer.play();
+});
